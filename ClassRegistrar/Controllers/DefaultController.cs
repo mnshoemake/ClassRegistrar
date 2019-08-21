@@ -92,6 +92,13 @@ namespace ClassRegistrar.Controllers
             else return View();
         }
 
+        public ActionResult LogOut()
+        {
+            Session.Abandon(); 
+            return RedirectToAction("Login", "Default");
+        }
+        
+
         [HttpPost]
         public ActionResult Login(FormCollection collection)
         {

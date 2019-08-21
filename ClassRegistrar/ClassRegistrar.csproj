@@ -125,6 +125,7 @@
     <Content Include="Views\Default\Classes.cshtml" />
     <Content Include="Views\Default\Register.cshtml" />
     <Content Include="Views\Default\MyClasses.cshtml" />
+    <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

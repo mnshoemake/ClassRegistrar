@@ -1,7 +1,7 @@
 ﻿@model ClassRegistrar.Models.Student
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
     ViewBag.Title = "Login";
 }
 
@@ -25,13 +25,11 @@
             <p>You are not currently logged in.</p>
         }
 
-        @Html.Label("test")
-
         @using (Html.BeginForm("Login", "Default", FormMethod.Post))
         {
             @Html.Label("Username: ") @Html.TextBoxFor(model => model.StudentLogin) <br />
             @Html.Label("Password: ") @Html.TextBoxFor(model => model.StudentPassword) <br />
-            <input type="submit" value="Submit" />
+        <input class="btn btn-success" type="submit" value="Log In" />
             <br />
             <p>@Html.ActionLink("View our Class Catalog", "Classes")</p>
             <p>Or create a @Html.ActionLink("new Login", "NewLogin")</p>
@@ -42,6 +40,10 @@
         {
             <p>@Html.ActionLink("Register for classes", "Register")</p>
             <p>@Html.ActionLink("View My Classes", "MyClasses")</p>
+            using (Html.BeginForm("Logout", "Default", new {} ))
+            {
+                <input class="btn btn-secondary" type="submit" value="Log Out" />
+            }
         }
     </div>
 </body>
