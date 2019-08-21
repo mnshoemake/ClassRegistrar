@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdvWebDevProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClassDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="Self.ClassStudents" FromRole="Classes" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="LoginRequest">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NewOrReactivate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReasonForAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateRequiredBy" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StudentPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Classes" Relationship="Self.ClassStudents" FromRole="Students" ToRole="Classes" />
+  </EntityType>
+  <EntityType Name="vClass">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="ClassName" />
+      <PropertyRef Name="ClassDate" />
+      <PropertyRef Name="ClassDescription" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClassDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vClassesByStudent">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="ClassName" />
+      <PropertyRef Name="ClassDate" />
+      <PropertyRef Name="ClassDescription" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="StudentEmail" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClassDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vClassStudent">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vLoginRequest">
+    <Key>
+      <PropertyRef Name="LoginId" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="EmailAddress" />
+      <PropertyRef Name="LoginName" />
+      <PropertyRef Name="NewOrReactivate" />
+      <PropertyRef Name="ReasonForAccess" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NewOrReactivate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReasonForAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateRequiredBy" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="vStudent">
+    <Key>
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="StudentEmail" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StudentPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="ClassStudents">
+    <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="AdvWebDevProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="LoginRequests" EntityType="Self.LoginRequest" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="vClasses" EntityType="Self.vClass" />
+    <EntitySet Name="vClassesByStudents" EntityType="Self.vClassesByStudent" />
+    <EntitySet Name="vClassStudents" EntityType="Self.vClassStudent" />
+    <EntitySet Name="vLoginRequests" EntityType="Self.vLoginRequest" />
+    <EntitySet Name="vStudents" EntityType="Self.vStudent" />
+    <AssociationSet Name="ClassStudents" Association="Self.ClassStudents">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <FunctionImport Name="pDelClasses">
+      <Parameter Name="ClassId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pDelClassStudents">
+      <Parameter Name="ClassId" Mode="In" Type="Int32" />
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pDelLoginRequests">
+      <Parameter Name="LoginId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pDelStudents">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pInsClasses">
+      <Parameter Name="ClassId" Mode="In" Type="Int32" />
+      <Parameter Name="ClassName" Mode="In" Type="String" />
+      <Parameter Name="ClassDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ClassDescription" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pInsClassStudents">
+      <Parameter Name="ClassId" Mode="In" Type="Int32" />
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pInsLoginRequests">
+      <Parameter Name="LoginID" Mode="InOut" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="LoginName" Mode="In" Type="String" />
+      <Parameter Name="NewOrReactivate" Mode="In" Type="String" />
+      <Parameter Name="ReasonForAccess" Mode="In" Type="String" />
+      <Parameter Name="DateRequiredBy" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pInsStudents">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+      <Parameter Name="StudentName" Mode="In" Type="String" />
+      <Parameter Name="StudentEmail" Mode="In" Type="String" />
+      <Parameter Name="StudentLogin" Mode="In" Type="String" />
+      <Parameter Name="StudentPassword" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pSelClassesByStudentId" ReturnType="Collection(AdvWebDevProjectModel.pSelClassesByStudentId_Result)">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pSelClassesByStudents" ReturnType="Collection(AdvWebDevProjectModel.pSelClassesByStudents_Result)" />
+    <FunctionImport Name="pSelLoginIdByLoginAndPassword">
+      <Parameter Name="StudentLogin" Mode="In" Type="String" />
+      <Parameter Name="StudentPassword" Mode="In" Type="String" />
+      <Parameter Name="StudentId" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pUpdClasses">
+      <Parameter Name="ClassId" Mode="In" Type="Int32" />
+      <Parameter Name="ClassName" Mode="In" Type="String" />
+      <Parameter Name="ClassDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ClassDescription" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pUpdClassStudents">
+      <Parameter Name="OriginalClassId" Mode="In" Type="Int32" />
+      <Parameter Name="OriginalStudentId" Mode="In" Type="Int32" />
+      <Parameter Name="NewClassId" Mode="In" Type="Int32" />
+      <Parameter Name="NewStudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pUpdLoginRequests">
+      <Parameter Name="LoginId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="LoginName" Mode="In" Type="String" />
+      <Parameter Name="NewOrReactivate" Mode="In" Type="String" />
+      <Parameter Name="ReasonForAccess" Mode="In" Type="String" />
+      <Parameter Name="DateRequiredBy" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pUpdStudents">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+      <Parameter Name="StudentName" Mode="In" Type="String" />
+      <Parameter Name="StudentEmail" Mode="In" Type="String" />
+      <Parameter Name="StudentLogin" Mode="In" Type="String" />
+      <Parameter Name="StudentPassword" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="pSelClassesByStudentId_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="StudentName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="StudentEmail" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+    <Property Type="String" Name="ClassName" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="ClassDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ClassDescription" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+  <ComplexType Name="pSelClassesByStudents_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="StudentName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="StudentEmail" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+    <Property Type="String" Name="ClassName" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="ClassDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ClassDescription" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+</Schema>

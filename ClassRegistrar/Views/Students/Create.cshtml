@@ -1,0 +1,28 @@
+﻿@model ClassRegistrar.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm("Create", "Students", FormMethod.Post))
+    {
+        @Html.Label("Student ID: ") @Html.TextBoxFor(model => model.StudentID) <br />
+        @Html.Label("Name: ") @Html.TextBoxFor(model => model.StudentName) <br />
+        @Html.Label("Email: ") @Html.TextBoxFor(model => model.StudentEmail) <br />
+        @Html.Label("Username: ") @Html.TextBoxFor(model => model.StudentLogin) <br />
+        @Html.Label("Password: ") @Html.TextBoxFor(model => model.StudentPassword) <br />
+        <input type="submit" value="Create" />
+    }
+
+    <br />
+
+</body>
+</html>

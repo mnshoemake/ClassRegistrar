@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdvWebDevProjectModelStoreContainer" CdmEntityContainer="AdvWebDevProjectEntities">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.Class">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+          <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginRequests">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.LoginRequest">
+        <MappingFragment StoreEntitySet="LoginRequests">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="NewOrReactivate" ColumnName="NewOrReactivate" />
+          <ScalarProperty Name="ReasonForAccess" ColumnName="ReasonForAccess" />
+          <ScalarProperty Name="DateRequiredBy" ColumnName="DateRequiredBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+          <ScalarProperty Name="StudentLogin" ColumnName="StudentLogin" />
+          <ScalarProperty Name="StudentPassword" ColumnName="StudentPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vClasses">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.vClass">
+        <MappingFragment StoreEntitySet="vClasses">
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+          <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vClassesByStudents">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.vClassesByStudent">
+        <MappingFragment StoreEntitySet="vClassesByStudents">
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+          <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vClassStudents">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.vClassStudent">
+        <MappingFragment StoreEntitySet="vClassStudents">
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vLoginRequests">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.vLoginRequest">
+        <MappingFragment StoreEntitySet="vLoginRequests">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="NewOrReactivate" ColumnName="NewOrReactivate" />
+          <ScalarProperty Name="ReasonForAccess" ColumnName="ReasonForAccess" />
+          <ScalarProperty Name="DateRequiredBy" ColumnName="DateRequiredBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vStudents">
+      <EntityTypeMapping TypeName="AdvWebDevProjectModel.vStudent">
+        <MappingFragment StoreEntitySet="vStudents">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+          <ScalarProperty Name="StudentLogin" ColumnName="StudentLogin" />
+          <ScalarProperty Name="StudentPassword" ColumnName="StudentPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClassStudents" TypeName="AdvWebDevProjectModel.ClassStudents" StoreEntitySet="ClassStudents">
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+      </EndProperty>
+      <EndProperty Name="Students">
+        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="pDelClasses" FunctionName="AdvWebDevProjectModel.Store.pDelClasses" />
+    <FunctionImportMapping FunctionImportName="pDelClassStudents" FunctionName="AdvWebDevProjectModel.Store.pDelClassStudents" />
+    <FunctionImportMapping FunctionImportName="pDelLoginRequests" FunctionName="AdvWebDevProjectModel.Store.pDelLoginRequests" />
+    <FunctionImportMapping FunctionImportName="pDelStudents" FunctionName="AdvWebDevProjectModel.Store.pDelStudents" />
+    <FunctionImportMapping FunctionImportName="pInsClasses" FunctionName="AdvWebDevProjectModel.Store.pInsClasses" />
+    <FunctionImportMapping FunctionImportName="pInsClassStudents" FunctionName="AdvWebDevProjectModel.Store.pInsClassStudents" />
+    <FunctionImportMapping FunctionImportName="pInsLoginRequests" FunctionName="AdvWebDevProjectModel.Store.pInsLoginRequests" />
+    <FunctionImportMapping FunctionImportName="pInsStudents" FunctionName="AdvWebDevProjectModel.Store.pInsStudents" />
+    <FunctionImportMapping FunctionImportName="pSelClassesByStudentId" FunctionName="AdvWebDevProjectModel.Store.pSelClassesByStudentId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdvWebDevProjectModel.pSelClassesByStudentId_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+          <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pSelClassesByStudents" FunctionName="AdvWebDevProjectModel.Store.pSelClassesByStudents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdvWebDevProjectModel.pSelClassesByStudents_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+          <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pSelLoginIdByLoginAndPassword" FunctionName="AdvWebDevProjectModel.Store.pSelLoginIdByLoginAndPassword" />
+    <FunctionImportMapping FunctionImportName="pUpdClasses" FunctionName="AdvWebDevProjectModel.Store.pUpdClasses" />
+    <FunctionImportMapping FunctionImportName="pUpdClassStudents" FunctionName="AdvWebDevProjectModel.Store.pUpdClassStudents" />
+    <FunctionImportMapping FunctionImportName="pUpdLoginRequests" FunctionName="AdvWebDevProjectModel.Store.pUpdLoginRequests" />
+    <FunctionImportMapping FunctionImportName="pUpdStudents" FunctionName="AdvWebDevProjectModel.Store.pUpdStudents" />
+  </EntityContainerMapping>
+</Mapping>

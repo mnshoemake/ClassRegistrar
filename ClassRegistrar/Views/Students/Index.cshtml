@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ClassRegistrar.Models.Student>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.StudentID)</th>
+            <th>@Html.DisplayNameFor(model => model.StudentName)</th>
+            <th>@Html.DisplayNameFor(model => model.StudentEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.StudentLogin)</th>
+            <th>@Html.DisplayNameFor(model => model.StudentPassword)</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.StudentID)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudentName)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudentEmail)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudentLogin)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudentPassword)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) | 
+                    @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                </td>
+            </tr>
+
+        }
+        @Html.ActionLink("Create", "Create", "Students")
+    </table>
+    </body>
+</html>

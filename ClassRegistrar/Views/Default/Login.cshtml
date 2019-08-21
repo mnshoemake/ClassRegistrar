@@ -1,0 +1,48 @@
+﻿@model ClassRegistrar.Models.Student
+
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <h1>Log In</h1>
+    <div>
+        @if (Session["StudentID"] != null)
+        {
+            <p>You are logged in as @Model.StudentName</p>
+
+        }
+        else
+        {
+            <p>You are not currently logged in.</p>
+        }
+
+        @Html.Label("test")
+
+        @using (Html.BeginForm("Login", "Default", FormMethod.Post))
+        {
+            @Html.Label("Username: ") @Html.TextBoxFor(model => model.StudentLogin) <br />
+            @Html.Label("Password: ") @Html.TextBoxFor(model => model.StudentPassword) <br />
+            <input type="submit" value="Submit" />
+            <br />
+            <p>@Html.ActionLink("View our Class Catalog", "Classes")</p>
+            <p>Or create a @Html.ActionLink("new Login", "NewLogin")</p>
+        }
+        <br />
+
+        @if (Session["StudentID"] != null)
+        {
+            <p>@Html.ActionLink("Register for classes", "Register")</p>
+            <p>@Html.ActionLink("View My Classes", "MyClasses")</p>
+        }
+    </div>
+</body>
+</html>

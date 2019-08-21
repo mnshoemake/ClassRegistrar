@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdvWebDevProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ClassDate" Type="datetime" Nullable="false" />
+    <Property Name="ClassDescription" Type="nvarchar" MaxLength="2000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClassStudents">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginRequests">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NewOrReactivate" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReasonForAccess" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateRequiredBy" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StudentEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StudentLogin" Type="nvarchar" MaxLength="50" />
+    <Property Name="StudentPassword" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvWebDevProject.dbo.vClasses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vClasses">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="ClassName" />
+      <PropertyRef Name="ClassDate" />
+      <PropertyRef Name="ClassDescription" />
+    </Key>
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ClassDate" Type="datetime" Nullable="false" />
+    <Property Name="ClassDescription" Type="nvarchar" MaxLength="2000" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvWebDevProject.dbo.vClassesByStudents' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vClassesByStudents">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="ClassName" />
+      <PropertyRef Name="ClassDate" />
+      <PropertyRef Name="ClassDescription" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="StudentEmail" />
+    </Key>
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ClassDate" Type="datetime" Nullable="false" />
+    <Property Name="ClassDescription" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StudentEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvWebDevProject.dbo.vClassStudents' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vClassStudents">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvWebDevProject.dbo.vLoginRequests' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vLoginRequests">
+    <Key>
+      <PropertyRef Name="LoginId" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="EmailAddress" />
+      <PropertyRef Name="LoginName" />
+      <PropertyRef Name="NewOrReactivate" />
+      <PropertyRef Name="ReasonForAccess" />
+    </Key>
+    <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NewOrReactivate" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReasonForAccess" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateRequiredBy" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvWebDevProject.dbo.vStudents' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vStudents">
+    <Key>
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="StudentEmail" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StudentEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StudentLogin" Type="nvarchar" MaxLength="50" />
+    <Property Name="StudentPassword" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_ClassStudents_Classes">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="ClassStudents" Type="Self.ClassStudents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="ClassStudents">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassStudents_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="ClassStudents" Type="Self.ClassStudents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="ClassStudents">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="pDelClasses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pDelClassStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="int" Mode="In" />
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pDelLoginRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoginId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pDelStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pInsClasses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="int" Mode="In" />
+    <Parameter Name="ClassName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ClassDate" Type="datetime" Mode="In" />
+    <Parameter Name="ClassDescription" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pInsClassStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="int" Mode="In" />
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pInsLoginRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoginID" Type="int" Mode="InOut" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="LoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewOrReactivate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReasonForAccess" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateRequiredBy" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pInsStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+    <Parameter Name="StudentName" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentLogin" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentPassword" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pSelClassesByStudentId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pSelClassesByStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pSelLoginIdByLoginAndPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudentLogin" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="pUpdClasses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="int" Mode="In" />
+    <Parameter Name="ClassName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ClassDate" Type="datetime" Mode="In" />
+    <Parameter Name="ClassDescription" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pUpdClassStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OriginalClassId" Type="int" Mode="In" />
+    <Parameter Name="OriginalStudentId" Type="int" Mode="In" />
+    <Parameter Name="NewClassId" Type="int" Mode="In" />
+    <Parameter Name="NewStudentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pUpdLoginRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoginId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="LoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewOrReactivate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReasonForAccess" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateRequiredBy" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pUpdStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+    <Parameter Name="StudentName" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentLogin" Type="nvarchar" Mode="In" />
+    <Parameter Name="StudentPassword" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="AdvWebDevProjectModelStoreContainer">
+    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassStudents" EntityType="Self.ClassStudents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginRequests" EntityType="Self.LoginRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vClasses" EntityType="Self.vClasses" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vClasses].[ClassId] AS [ClassId], 
+    [vClasses].[ClassName] AS [ClassName], 
+    [vClasses].[ClassDate] AS [ClassDate], 
+    [vClasses].[ClassDescription] AS [ClassDescription]
+    FROM [dbo].[vClasses] AS [vClasses]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vClassesByStudents" EntityType="Self.vClassesByStudents" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vClassesByStudents].[ClassId] AS [ClassId], 
+    [vClassesByStudents].[ClassName] AS [ClassName], 
+    [vClassesByStudents].[ClassDate] AS [ClassDate], 
+    [vClassesByStudents].[ClassDescription] AS [ClassDescription], 
+    [vClassesByStudents].[StudentId] AS [StudentId], 
+    [vClassesByStudents].[StudentName] AS [StudentName], 
+    [vClassesByStudents].[StudentEmail] AS [StudentEmail]
+    FROM [dbo].[vClassesByStudents] AS [vClassesByStudents]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vClassStudents" EntityType="Self.vClassStudents" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vClassStudents].[ClassId] AS [ClassId], 
+    [vClassStudents].[StudentId] AS [StudentId]
+    FROM [dbo].[vClassStudents] AS [vClassStudents]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vLoginRequests" EntityType="Self.vLoginRequests" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vLoginRequests].[LoginId] AS [LoginId], 
+    [vLoginRequests].[Name] AS [Name], 
+    [vLoginRequests].[EmailAddress] AS [EmailAddress], 
+    [vLoginRequests].[LoginName] AS [LoginName], 
+    [vLoginRequests].[NewOrReactivate] AS [NewOrReactivate], 
+    [vLoginRequests].[ReasonForAccess] AS [ReasonForAccess], 
+    [vLoginRequests].[DateRequiredBy] AS [DateRequiredBy]
+    FROM [dbo].[vLoginRequests] AS [vLoginRequests]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vStudents" EntityType="Self.vStudents" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vStudents].[StudentId] AS [StudentId], 
+    [vStudents].[StudentName] AS [StudentName], 
+    [vStudents].[StudentEmail] AS [StudentEmail], 
+    [vStudents].[StudentLogin] AS [StudentLogin], 
+    [vStudents].[StudentPassword] AS [StudentPassword]
+    FROM [dbo].[vStudents] AS [vStudents]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ClassStudents_Classes" Association="Self.FK_ClassStudents_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="ClassStudents" EntitySet="ClassStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassStudents_Students" Association="Self.FK_ClassStudents_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="ClassStudents" EntitySet="ClassStudents" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

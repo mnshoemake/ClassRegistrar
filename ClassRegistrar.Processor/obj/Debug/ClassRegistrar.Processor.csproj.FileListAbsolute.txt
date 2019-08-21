@@ -1,0 +1,6 @@
+C:\Users\Michael\source\repos\ClassRegistrar\ClassRegistrar.Processor\bin\Debug\ClassRegistrar.Processor.dll
+C:\Users\Michael\source\repos\ClassRegistrar\ClassRegistrar.Processor\bin\Debug\ClassRegistrar.Processor.pdb
+C:\Users\Michael\source\repos\ClassRegistrar\ClassRegistrar.Processor\obj\Debug\ClassRegistrar.Processor.csprojAssemblyReference.cache
+C:\Users\Michael\source\repos\ClassRegistrar\ClassRegistrar.Processor\obj\Debug\ClassRegistrar.Processor.csproj.CoreCompileInputs.cache
+C:\Users\Michael\source\repos\ClassRegistrar\ClassRegistrar.Processor\obj\Debug\ClassRegistrar.Processor.dll
+C:\Users\Michael\source\repos\ClassRegistrar\ClassRegistrar.Processor\obj\Debug\ClassRegistrar.Processor.pdb

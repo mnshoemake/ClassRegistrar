@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRegistrar", "ClassRegistrar\ClassRegistrar.csproj", "{23A74790-91C0-42BE-B2EB-8EFA1B1304EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRegistrar.Processor", "ClassRegistrar.Processor\ClassRegistrar.Processor.csproj", "{5B425205-13A9-4B25-BB33-E7D684A65E43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23A74790-91C0-42BE-B2EB-8EFA1B1304EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A74790-91C0-42BE-B2EB-8EFA1B1304EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A74790-91C0-42BE-B2EB-8EFA1B1304EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A74790-91C0-42BE-B2EB-8EFA1B1304EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B425205-13A9-4B25-BB33-E7D684A65E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B425205-13A9-4B25-BB33-E7D684A65E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B425205-13A9-4B25-BB33-E7D684A65E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B425205-13A9-4B25-BB33-E7D684A65E43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B9162D4-1E6B-4F6C-B9CD-41AF9E8914B9}
+	EndGlobalSection
+EndGlobal
