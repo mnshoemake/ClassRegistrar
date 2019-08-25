@@ -49,6 +49,25 @@ namespace ClassRegistrar.Controllers
         }
         #endregion
 
+        #region LoginTools
+        private int GetNewLoginID()
+        {
+            List<ClassRegistrar.Processor.LoginRequest> lstProcessorLoginRequests = loginRequestProcessor.Select(strConnectionString);
+
+            int highestID = 0;
+
+            foreach (var processorLoginRequest in lstProcessorLoginRequests)
+            {
+                if (processorLoginRequest.LoginID > highestID)
+                {
+                    highestID = processorLoginRequest.LoginID;
+                }
+            }
+            highestID++;
+            return highestID;
+        }
+        #endregion
+
 
 
         private List<Models.Class> SelectAllClasses()
@@ -139,45 +158,56 @@ namespace ClassRegistrar.Controllers
                 if (result.Count() > 0)
                 {
                     Session["StudentID"] = studentResult.StudentID;
-                    return View(SelectOneStudents(studentResult.StudentID));
+                    return RedirectToAction("MyClasses");
                 }
                 return View();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ViewData["Error"] = ex.Message;
+                ViewData["Error"] = "Invalid Login";//ex.Message;
                 return View();
             }
         }
         #endregion
 
         #region NewLogin
+       
         public ActionResult NewLogin()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult NewLogin(FormCollection collection)
+        public ActionResult NewLogin(Models.LoginRequest login)
+        
         {
-            ViewData["Error"] = "";
-            try
+            
+            login.LoginID = GetNewLoginID();
+
+            if (ModelState.IsValid)
             {
-                loginRequestProcessor.Insert(strConnectionString
-                                  , int.Parse(collection["LoginId"])
-                                  , collection["Name"]
-                                  , collection["EmailAddress"]
-                                  , collection["LoginName"]
-                                  , collection["NewOrReactivate"]
-                                  , collection["ReasonForAccess"]
-                                  , DateTime.Parse(collection["DateRequiredBy"]));
-                return RedirectToAction("Login");
+                ViewData["Error"] = "";
+                try
+                {
+                    loginRequestProcessor.Insert(strConnectionString
+                        , login.LoginID
+                        , login.Name
+                        , login.EmailAddress
+                        , login.LoginName
+                        , login.NewOrReactivate
+                        , login.ReasonForAccess
+                        , login.DateRequiredBy);
+                    ViewData["SubmitLoginSuccess"] = true;
+                    return View(login);
+                }
+                catch (Exception ex)
+                {
+                    ViewData["Error"] = ex.Message;
+                    return View(login);
+                }
             }
-            catch (Exception ex)
-            {
-                ViewData["Error"] = ex.Message;
-                return View();
-            }
+
+            return View(login);
         }
         #endregion NewLogin
 
@@ -188,6 +218,14 @@ namespace ClassRegistrar.Controllers
         }
         #endregion 
 
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login");
+        }
+
+        
 
 
 
@@ -197,7 +235,15 @@ namespace ClassRegistrar.Controllers
             if (Session["StudentID"] != null)
             {
                 int studentID = int.Parse(Session["StudentID"].ToString());
-                return View(SelectAllClasses());
+                var classesStudentIsRegisteredFor = SelectClassesByStudent(studentID);
+                var availableClasses = SelectAllClasses();
+
+                List<int> lstClassIDsStudentIsCurrentlyRegisteredFor
+                    = new List<int>(classesStudentIsRegisteredFor.Select(x => x.ClassID));
+
+                availableClasses.RemoveAll(x => lstClassIDsStudentIsCurrentlyRegisteredFor.Contains(x.ClassID));
+
+                return View(availableClasses);
             }
             else { return RedirectToAction("Login"); }
 
@@ -211,7 +257,15 @@ namespace ClassRegistrar.Controllers
             {
                 int studentID = int.Parse(Session["StudentID"].ToString());
                 classStudentProcessor.Insert(strConnectionString, studentID, id);
-                return View(SelectAllClasses());
+                var classesStudentIsRegisteredFor = SelectClassesByStudent(studentID);
+                var availableClasses = SelectAllClasses();
+
+                List<int> lstClassIDsStudentIsCurrentlyRegisteredFor
+                    = new List<int>(classesStudentIsRegisteredFor.Select(x => x.ClassID));
+
+                availableClasses.RemoveAll(x => lstClassIDsStudentIsCurrentlyRegisteredFor.Contains(x.ClassID));
+
+                return View(availableClasses);
             }
             else { return RedirectToAction("Login"); }
             

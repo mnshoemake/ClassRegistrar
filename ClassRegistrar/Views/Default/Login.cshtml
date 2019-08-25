@@ -11,6 +11,55 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#StudentLogin").keyup(function () {
+                if ($("#StudentLogin").val().length < 1) {
+                    $("#uidValidationText").text("Username is required.");
+                    $("#btnLogin").prop('disabled', 'disabled');
+                }
+                else if ($("#StudentPassword").val().length > 0
+                    && $("#StudentLogin").val().length > 0) {
+                    $("#uidValidationText").text("");
+                    $("#btnLogin").removeAttr("disabled");
+                }
+                else {
+                    $("#uidValidationText").text("");
+                    $("#btnLogin").prop('disabled', 'disabled');
+                }
+            });
+            $("#StudentPassword").keyup(function () {
+                if ($("#StudentPassword").val().length < 1) {
+                    $("#pwdValidationText").text("Password is required.");
+                    $("#btnLogin").prop('disabled', 'disabled');
+                }
+                else if ($("#StudentPassword").val().length > 0
+                    && $("#StudentLogin").val().length > 0) {
+                    $("#pwdValidationText").text("");
+                    $("#btnLogin").removeAttr("disabled");
+                }
+                else {
+                    $("#pwdValidationText").text("");
+                    $("#btnLogin").prop('disabled', 'disabled');
+                }
+
+            })
+        });
+ 
+    </script>
+
+    <style>
+        #uidValidationText {
+            color: darkred
+        }
+        #pwdValidationText {
+            color: darkred
+        }
+        #pNotLoggedIn {
+            color: darkred
+        }
+    </style>
 </head>
 <body>
     <h1>Log In</h1>
@@ -22,14 +71,26 @@
         }
         else
         {
-            <p>You are not currently logged in.</p>
+            <p id="pNotLoggedIn">You are not currently logged in.</p>
         }
+        @if (ViewData["Error"] != null)
+        {
+            <p>@ViewData["Error"]</p>
+        }
+
+        <p id="uidValidationText"></p>
+        <p id="pwdValidationText"></p>
 
         @using (Html.BeginForm("Login", "Default", FormMethod.Post))
         {
             @Html.Label("Username: ") @Html.TextBoxFor(model => model.StudentLogin) <br />
             @Html.Label("Password: ") @Html.TextBoxFor(model => model.StudentPassword) <br />
-        <input class="btn btn-success" type="submit" value="Log In" />
+            if (Session["StudentID"] != null)
+            {
+
+            }
+            <input class="btn btn-success" id="btnLogin" type="submit" value="Log In" disabled="disabled" />
+
             <br />
             <p>@Html.ActionLink("View our Class Catalog", "Classes")</p>
             <p>Or create a @Html.ActionLink("new Login", "NewLogin")</p>
@@ -38,12 +99,12 @@
 
         @if (Session["StudentID"] != null)
         {
+            using (Html.BeginForm("Logout", "Default", FormMethod.Post, new { role = "form" }))
+            {
+                <input class="btn btn-secondary" type="submit" id="btnLogout" value="Log Out" />
+            }
             <p>@Html.ActionLink("Register for classes", "Register")</p>
             <p>@Html.ActionLink("View My Classes", "MyClasses")</p>
-            using (Html.BeginForm("Logout", "Default", new {} ))
-            {
-                <input class="btn btn-secondary" type="submit" value="Log Out" />
-            }
         }
     </div>
 </body>

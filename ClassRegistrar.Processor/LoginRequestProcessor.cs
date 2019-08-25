@@ -54,7 +54,7 @@ namespace ClassRegistrar.Processor
                 List<LoginRequest> LoginRequests = new List<LoginRequest>();
 
                 string strCmd =
-                    @"LoginId
+                    @"SELECT LoginId
                         ,Name
                         ,EmailAddress
                         ,LoginName

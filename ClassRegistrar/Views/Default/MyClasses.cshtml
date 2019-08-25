@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
-    Layout = null;
+    ViewBag.Title = "My Classes";
 }
 
 <!DOCTYPE html>
@@ -10,37 +10,26 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>MyClasses</title>
+    <title>My Classes</title>
 </head>
 <body>
+    <h1>My Classes</h1>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassDescription)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.ClassName)</th>
+            <th>@Html.DisplayNameFor(model => model.ClassDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ClassDescription)</th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassDescription)
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ClassName)</td>
+                <td>@Html.DisplayFor(modelItem => item.ClassDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.ClassDescription)</td>
+            </tr>
+        }
+
     </table>
 </body>
 

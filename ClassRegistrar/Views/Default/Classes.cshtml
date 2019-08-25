@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
-    Layout = null;
+    ViewBag.Title = "Classes";
 }
 
 <!DOCTYPE html>
@@ -13,39 +13,21 @@
     <title>Classes</title>
 </head>
 <body>
-    @*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+    <h1>Class Catalog</h1>
+    <p>View our full selection of classes below!</p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassDescription)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.ClassName)</th>
+            <th>@Html.DisplayNameFor(model => model.ClassDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ClassDescription)</th>
             <th></th>
         </tr>
     
     @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassDescription)
-            </td>
-            @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ClassID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ClassID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ClassID })
-            </td>*@
+            <td>@Html.DisplayFor(modelItem => item.ClassName)</td>
+            <td>@Html.DisplayFor(modelItem => item.ClassDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.ClassDescription)</td>
         </tr>
     }
     
